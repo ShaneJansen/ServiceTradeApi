@@ -11,21 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function() { return "Welcome to the API!"; });
+
+/*
+ * Account APIs
+ */
+Route::post('user', 'UserController@create');
+Route::post('user/auth', 'UserController@authenticate');
+
+/*
+ * Authenticated APIs
+ */
+Route::group(['middleware' => ['authenticate']], function () {
+    //
 });
 
 /*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
-
-Route::group(['middleware' => ['web']], function () {
+ * Authenticated and verified email APIs
+ */
+Route::group(['middleware' => ['authenticate', 'verify']], function () {
     //
 });

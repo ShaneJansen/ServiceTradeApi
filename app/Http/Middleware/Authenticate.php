@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class Authenticate
 {
     /**
-     * Handle an incoming request.
+     * Check if the user has valid credentials.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
