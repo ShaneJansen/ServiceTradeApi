@@ -2,10 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-class PasswordReset extends Model
-{
+class PasswordReset extends BaseModel {
     protected $hidden = [];
 
     public function user() {

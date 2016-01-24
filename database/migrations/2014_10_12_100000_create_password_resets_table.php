@@ -16,8 +16,8 @@ class CreatePasswordResetsTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->string('email')->unique();
-            $table->string('token')->index();
+            $table->string('email', 50)->unique();
+            $table->string('token', 100);
             $table->timestamps();
 
             $table->foreign('email')

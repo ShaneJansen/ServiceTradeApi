@@ -15,15 +15,10 @@ class Authenticate
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
-    {
-        if (Auth::guard($guard)->guest()) {
-            if ($request->ajax()) {
-                return response('Unauthorized.', 401);
-            } else {
-                return redirect()->guest('login');
-            }
-        }
+    public function handle($request, Closure $next, $guard = null) {
+        $suppliedUserId = $request->header('X-USER-ID');
+        $suppliedToken = $request->header('X-AUTH-TOKEN');
+
 
         return $next($request);
     }

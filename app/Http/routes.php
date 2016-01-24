@@ -16,14 +16,14 @@ Route::get('/', function() { return "Welcome to the API!"; });
 /*
  * Account APIs
  */
-Route::post('user', 'UserController@create');
-Route::post('user/auth', 'UserController@authenticate');
+Route::post('user', 'User\UserController@create');
+Route::post('user/auth', 'User\UserController@authenticate');
 
 /*
  * Authenticated APIs
  */
 Route::group(['middleware' => ['authenticate']], function () {
-    //
+    Route::get('skills', 'User\SkillController@getAll');
 });
 
 /*
