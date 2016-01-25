@@ -28,14 +28,13 @@ class UserController extends Controller {
             [
                 'email.unique' => 'This email is already in use.'
             ]);
-        if ($validator->fails()) return response($validator->messages(), 422);
+        if ($validator->fails()) return response($validator->messages()->all(), 422);
 
         $user = $this->userRepo->createUser(
             $request->input('firstName'),
             $request->input('lastName'),
             $request->input('email'),
-            $request->input('password'),
-            $request->input('ip')
+            $request->input('password')
         );
 
         return response($user->toArrayCamel());
@@ -47,7 +46,7 @@ class UserController extends Controller {
             $request->input('password')
         );
 
-        if ($user == null) return response('Incorrect email or password.', 401);
+        if ($user == null) return response()->json(['Incorrect email or password.'], 401);
         return response($user->toArrayCamel());
     }
 }

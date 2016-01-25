@@ -12,7 +12,7 @@ use App\User;
  * Date: 1/23/16
  */
 class UserRepository {
-    public function createUser($firstName, $lastName, $email, $password, $clientIp) {
+    public function createUser($firstName, $lastName, $email, $password) {
         $password = Hash::make($password);
         $token = Uuid::uuid4();
 
@@ -22,7 +22,6 @@ class UserRepository {
         $user->email = $email;
         $user->password = $password;
         $user->token = $token;
-        $user->sign_up_ip = $clientIp;
         $user->verified = 0;
         $user->save();
 
