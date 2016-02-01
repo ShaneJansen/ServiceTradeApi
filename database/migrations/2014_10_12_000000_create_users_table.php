@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 100);
             $table->string('token', 100);
             $table->tinyInteger('verified');
+            $table->tinyInteger('availability');
             $table->timestamps();
         });
     }

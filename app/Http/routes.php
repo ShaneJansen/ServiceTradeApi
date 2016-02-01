@@ -23,6 +23,10 @@ Route::post('user/auth', 'User\UserController@authenticate');
  * Authenticated APIs
  */
 Route::group(['middleware' => ['authenticate']], function () {
+    // User
+    Route::put('user', 'User\UserController@updateUser');
+
+    // Skills
     Route::get('skills', 'User\SkillController@getAll');
 });
 

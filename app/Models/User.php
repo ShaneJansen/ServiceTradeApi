@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 class User extends BaseModel {
     /**
@@ -9,6 +9,6 @@ class User extends BaseModel {
      * @var array
      */
     protected $hidden = [
-        'password', 'sign_up_ip', 'created_at', 'updated_at'
+        'password', 'created_at', 'updated_at'
     ];
 }

@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Helper;
 use App\Repositories\UserRepository;
 
 class UserController extends Controller {
     protected $userRepo;
 
-    public function __construct(UserRepository $userRepo) {
+    public function __construct(Request $request, Helper $helper, UserRepository $userRepo) {
         $this->userRepo = $userRepo;
     }
 
@@ -47,6 +48,21 @@ class UserController extends Controller {
         );
 
         if ($user == null) return response()->json(['Incorrect email or password.'], 401);
+        return response($user->toArrayCamel());
+    }
+
+    public function updateUser(Request $request) {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'availability' => 'integer|between:0,4'
+            ]);
+        if ($validator->fails()) return response($validator->messages()->all(), 422);
+
+        $user = $this->userRepo->updateUser(
+            $request->input('availability')
+        );
+
         return response($user->toArrayCamel());
     }
 }
