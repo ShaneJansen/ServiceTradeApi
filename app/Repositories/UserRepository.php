@@ -32,6 +32,7 @@ class UserRepository {
         $user = User::where('email', $email)->first();
 
         if ($user && Hash::check($password, $user->password)) {
+            $user->touch();
             return $user;
         }
 
