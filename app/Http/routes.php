@@ -24,6 +24,7 @@ Route::post('user/auth', 'User\UserController@authenticate');
  */
 Route::group(['middleware' => ['authenticate']], function () {
     // User
+    Route::get('user/availabilities', 'User\UserController@getUserAvailabilities');
     Route::put('user', 'User\UserController@updateUser');
 
     // Skills
