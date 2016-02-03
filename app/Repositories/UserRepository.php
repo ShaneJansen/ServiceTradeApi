@@ -48,9 +48,12 @@ class UserRepository {
         return null;
     }
 
-    public function updateUser($availability = null) {
+    public function updateUser($firstName, $lastName, $email, $availability) {
         $user = User::where('id', $this->userId)->first();
 
+        if (isset($firstName)) $user->first_name = $firstName;
+        if (isset($lastName)) $user->last_name = $lastName;
+        if (isset($email)) $user->email = $email;
         if (isset($availability)) $user->availability = $availability;
         $user->save();
 

@@ -78,6 +78,9 @@ class UserController extends Controller {
         if ($validator->fails()) return response($validator->messages()->all(), 422);
 
         $user = $this->userRepo->updateUser(
+            $request->input('firstName'),
+            $request->input('lastName'),
+            $request->input('email'),
             $request->input('availability')
         );
 
@@ -91,7 +94,8 @@ class UserController extends Controller {
      */
     public function getUserAvailabilities() {
         $result = array();
-        for ($i=User::AVAILABILITY_MIN; $i<=User::AVAILABILITY_MAX; $i++) {
+        // Loop all availabilities except 'none' (0)
+        for ($i=User::AVAILABILITY_MIN + 1; $i<=User::AVAILABILITY_MAX; $i++) {
             $item = array();
             $item['code'] = $i;
             $item['codeType'] = User::availabilityType($i);
