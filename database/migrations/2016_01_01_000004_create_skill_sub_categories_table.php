@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePasswordResetsTable extends Migration
+class CreateSkillSubCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,18 @@ class CreatePasswordResetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
+        Schema::create('skill_sub_categories', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->string('email', 50)->unique();
-            $table->string('token', 100);
+            $table->integer('skill_category_id')->unsigned();
+            $table->string('name', 50);
+            $table->string('icon', 50);
             $table->timestamps();
 
-            $table->foreign('email')
-                ->references('email')
-                ->on('users')
+            $table->foreign('skill_category_id')
+                ->references('id')
+                ->on('skill_categories')
                 ->onDelete('cascade');
         });
     }
@@ -34,6 +35,6 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('password_resets');
+        //
     }
 }

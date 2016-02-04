@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Helper;
+use App\Repositories\SkillRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -9,7 +11,16 @@ use App\Http\Controllers\Controller;
 
 class SkillController extends Controller
 {
-    public function getAll() {
-        die('All skills here.');
+    protected $skillRepo;
+    protected $helper;
+
+    public function __construct(Helper $helper, SkillRepository $skillRepo) {
+        $this->skillRepo = $skillRepo;
+        $this->helper = $helper;
+    }
+
+    public function getPossibleSkills() {
+        $skills = $this->skillRepo->getPossibleSkills();
+        return response($this->helper->modelToCamel($skills));
     }
 }

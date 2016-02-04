@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,18 +12,18 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('password_resets', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->string('first_name', 50);
-            $table->string('last_name', 50);
             $table->string('email', 50)->unique();
-            $table->string('password', 100);
             $table->string('token', 100);
-            $table->tinyInteger('verified');
-            $table->tinyInteger('availability');
             $table->timestamps();
+
+            $table->foreign('email')
+                ->references('email')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 
@@ -34,6 +34,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        //
     }
 }

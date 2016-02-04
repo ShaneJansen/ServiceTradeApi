@@ -92,7 +92,7 @@ class UserController extends Controller {
      *
      * @return array
      */
-    public function getUserAvailabilities() {
+    public function getPossibleAvailabilities() {
         $result = array();
         // Loop all availabilities except 'none' (0)
         for ($i=User::AVAILABILITY_MIN + 1; $i<=User::AVAILABILITY_MAX; $i++) {

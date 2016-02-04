@@ -24,11 +24,12 @@ Route::post('user/auth', 'User\UserController@authenticate');
  */
 Route::group(['middleware' => ['authenticate']], function () {
     // User
-    Route::get('user/availabilities', 'User\UserController@getUserAvailabilities');
+    Route::get('user/availabilities', 'User\UserController@getPossibleAvailabilities');
     Route::put('user', 'User\UserController@updateUser');
 
-    // Skills
-    Route::get('skills', 'User\SkillController@getAll');
+    // Skill
+    Route::get('skill/skills', 'User\SkillController@getPossibleSkills');
+    Route::get('skill', 'User\SkillController@getAllSkills');
 });
 
 /*
