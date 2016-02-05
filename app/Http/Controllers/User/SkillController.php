@@ -20,7 +20,6 @@ class SkillController extends Controller
     }
 
     public function getPossibleSkills() {
-        $skills = $this->skillRepo->getPossibleSkills();
-        return response($this->helper->modelToCamel($skills));
+        return response($this->skillRepo->getPossibleSkills());
     }
 }

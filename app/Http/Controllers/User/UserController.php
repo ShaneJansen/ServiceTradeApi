@@ -44,7 +44,7 @@ class UserController extends Controller {
             $request->input('password')
         );
 
-        return response($user->toArrayCamel());
+        return response($user);
     }
 
     /**
@@ -60,7 +60,7 @@ class UserController extends Controller {
         );
 
         if ($user == null) return response()->json(['Incorrect email or password.'], 401);
-        return response($user->toArrayCamel());
+        return response($user);
     }
 
     /**
@@ -84,7 +84,7 @@ class UserController extends Controller {
             $request->input('availability')
         );
 
-        return response($user->toArrayCamel());
+        return response($user);
     }
 
     /**

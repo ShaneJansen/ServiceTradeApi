@@ -12,16 +12,34 @@ class SkillCategoriesSeeder extends Seeder
     public function run()
     {
         // 1
-        DB::table('skill_categories')->insert(['name' => 'Programming']);
+        DB::table('skill_categories')->insert([
+            'name' => 'Programming',
+            'icon' => 'code'
+        ]);
         // 2
-        DB::table('skill_categories')->insert(['name' => 'Graphics & Design']);
+        DB::table('skill_categories')->insert([
+            'name' => 'Graphics & Design',
+            'icon' => 'crop_original'
+        ]);
         // 3
-        DB::table('skill_categories')->insert(['name' => 'Writing & Translation']);
+        DB::table('skill_categories')->insert([
+            'name' => 'Writing & Translation',
+            'icon' => 'translate'
+        ]);
         // 4
-        DB::table('skill_categories')->insert(['name' => 'Video & Animation']);
+        DB::table('skill_categories')->insert([
+            'name' => 'Video & Animation',
+            'icon' => 'videocam'
+        ]);
         // 5
-        DB::table('skill_categories')->insert(['name' => 'Business']);
+        DB::table('skill_categories')->insert([
+            'name' => 'Business',
+            'icon' => 'business'
+        ]);
         // 6
-        DB::table('skill_categories')->insert(['name' => 'Other']);
+        DB::table('skill_categories')->insert([
+            'name' => 'Other',
+            'icon' => 'lightbulb_outline'
+        ]);
     }
 }
