@@ -31,6 +31,7 @@ class UserRepository {
         $user->email = $email;
         $user->password = $password;
         $user->token = $token;
+        $user->first_login = 1;
         $user->verified = 0;
         $user->save();
 
@@ -41,7 +42,9 @@ class UserRepository {
         $user = User::where('email', $email)->first();
 
         if ($user && Hash::check($password, $user->password)) {
-            $user->touch();
+            $user->first_login = 0;
+            $user->save();
+            //$user->touch();
             return $user;
         }
 

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email', 50)->unique();
             $table->string('password', 100);
             $table->string('token', 100);
+            $table->tinyInteger('first_login');
             $table->tinyInteger('verified');
             $table->tinyInteger('availability');
             $table->timestamps();
