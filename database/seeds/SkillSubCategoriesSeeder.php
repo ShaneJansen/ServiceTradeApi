@@ -23,5 +23,11 @@ class SkillSubCategoriesSeeder extends Seeder
             'name' => 'Websites/Frontend',
             'icon' => 'web'
         ]);
+        // 3
+        DB::table('skill_sub_categories')->insert([
+            'skill_category_id' => '1',
+            'name' => 'Databases/Backend',
+            'icon' => 'cloud'
+        ]);
     }
 }
