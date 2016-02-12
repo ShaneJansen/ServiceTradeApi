@@ -33,6 +33,7 @@ class UserRepository {
         $user->token = $token;
         $user->first_login = 1;
         $user->verified = 0;
+        $user->availability = 1;
         $user->save();
 
         return $user;
