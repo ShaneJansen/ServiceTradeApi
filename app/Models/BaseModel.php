@@ -15,17 +15,17 @@ class BaseModel extends Model {
     public function transformKeys(&$array)
     {
         foreach (array_keys($array) as $key):
-            # Working with references here to avoid copying the value,
-            # since the data is quite large.
+            // Working with references here to avoid copying the value,
+            // since the data is quite large.
             $value = &$array[$key];
             unset($array[$key]);
-            # Perform key manipulation
+            // Perform key manipulation
             $transformedKey = lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $key))));
-            # Work recursively
+            // Work recursively
             if (is_array($value)) $this->transformKeys($value);
-            # Store with new key
+            // Store with new key
             $array[$transformedKey] = $value;
-            # Unset references
+            // Unset references
             unset($value);
         endforeach;
     }

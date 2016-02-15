@@ -22,4 +22,8 @@ class SkillController extends Controller
     public function getPossibleSkills() {
         return response($this->skillRepo->getPossibleSkills());
     }
+
+    public function getAllSkills() {
+        //
+    }
 }
