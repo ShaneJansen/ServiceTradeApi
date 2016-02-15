@@ -16,6 +16,15 @@ class User extends BaseModel {
     ];
 
     /**
+     * Many to many relationship. Using an intermediate table.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function skills() {
+        return $this->belongsToMany('App\Models\Skill', 'user_skills', 'user_id', 'skill_id');
+    }
+
+    /**
      * Override the getter for this attribute.
      *
      * @param $value

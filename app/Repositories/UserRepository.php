@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Helper;
 
-
 /**
  * Created by Shane Jansen.
  * Date: 1/23/16

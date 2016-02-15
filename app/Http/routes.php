@@ -16,20 +16,25 @@ Route::get('/', function() { return "Welcome to the API!"; });
 /*
  * Account APIs
  */
-Route::post('user', 'User\UserController@create');
-Route::post('user/auth', 'User\UserController@authenticate');
+Route::post('user', 'UserController@create');
+Route::post('user/auth', 'UserController@authenticate');
 
 /*
  * Authenticated APIs
  */
 Route::group(['middleware' => ['authenticate']], function () {
     // User
-    Route::get('user/availabilities', 'User\UserController@getPossibleAvailabilities');
-    Route::put('user', 'User\UserController@updateUser');
+    Route::put('user', 'UserController@updateUser');
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('skill', 'UserController@getAllUserSkills');
+        Route::post('skill', 'UserController@addUserSkill');
+    });
+
+    // Availability
+    Route::get('availabilities', 'AvailabilityController@getPossibleAvailabilities');
 
     // Skill
-    Route::get('skill/skills', 'User\SkillController@getPossibleSkills');
-    Route::get('skill', 'User\SkillController@getAllSkills');
+    Route::get('skill', 'SkillController@getPossibleSkills');
 });
 
 /*

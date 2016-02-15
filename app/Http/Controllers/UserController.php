@@ -1,20 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers;
 
+use App\Helper;
+use App\Repositories\SkillRepository;
 use Validator;
 use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 
 class UserController extends Controller {
+    protected $helper;
     protected $userRepo;
+    protected $skillRepo;
 
-    public function __construct(UserRepository $userRepo) {
+    public function __construct(Helper $helper, UserRepository $userRepo, SkillRepository $skillRepo) {
+        $this->helper = $helper;
         $this->userRepo = $userRepo;
+        $this->skillRepo = $skillRepo;
     }
 
     /**
@@ -88,21 +93,24 @@ class UserController extends Controller {
     }
 
     /**
-     * Return all of the availability codes, types, and names.
+     * Return all of this user's skills.
      *
-     * @return array
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function getPossibleAvailabilities() {
-        $result = array();
-        // Loop all availabilities except 'none' (0)
-        for ($i=User::AVAILABILITY_MIN + 1; $i<=User::AVAILABILITY_MAX; $i++) {
-            $item = array();
-            $item['code'] = $i;
-            $item['codeType'] = User::availabilityType($i);
-            $item['decoded'] = User::availabilityName($i);
-            array_push($result, $item);
-        }
+    public function getAllUserSkills(Request $request) {
+        return response($this->skillRepo->getAllUserSkills($this->helper->getUserId($request)));
+    }
 
-        return $result;
+    /**
+     * Add a skill to this user.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function addUserSkill(Request $request) {
+        return response($this->skillRepo->addUserSkills(
+            $this->helper->getUserId($request),
+            $request->input('skillIds')));
     }
 }
