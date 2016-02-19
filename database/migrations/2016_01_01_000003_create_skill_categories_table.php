@@ -15,10 +15,9 @@ class CreateSkillCategoriesTable extends Migration
         Schema::create('skill_categories', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            $table->increments('id');
+            $table->integer('id')->unsigned();
             $table->string('name', 50);
             $table->string('icon', 50);
-            $table->timestamps();
         });
     }
 

@@ -11,20 +11,54 @@ class SkillsSeeder extends Seeder
      */
     public function run()
     {
-        // 1
-        DB::table('skills')->insert([
-            'skill_sub_category_id' => '1',
-            'name' => 'Android'
-        ]);
-        // 2
-        DB::table('skills')->insert([
-            'skill_sub_category_id' => '1',
-            'name' => 'iOS'
-        ]);
-        // 3
-        DB::table('skills')->insert([
-            'skill_sub_category_id' => '2',
-            'name' => 'AngularJS'
-        ]);
+        /*
+         * Clear the table
+         */
+        DB::table('skills')->delete();
+
+        /*
+         * PROGRAMMING - 100
+         */
+            /* Mobile Applications - 100 */
+            DB::table('skills')->insert([
+                'id' => 1001,
+                'skill_sub_category_id' => 1001,
+                'name' => 'Android'
+            ]);
+            DB::table('skills')->insert([
+                'id' => 1002,
+                'skill_sub_category_id' => 1001,
+                'name' => 'iOS'
+            ]);
+            /* Websites/Frontend - 200 */
+            DB::table('skills')->insert([
+                'id' => 2001,
+                'skill_sub_category_id' => 1002,
+                'name' => 'AngularJS'
+            ]);
+
+        /*
+         * GRAPHICS & DESIGN - 200
+         */
+
+        /*
+         * WRITING AND TRANSLATION - 300
+         */
+
+        /*
+         * VIDEO & ANIMATION - 400
+         */
+
+        /*
+         * BUSINESS - 500
+         */
+
+        /*
+         * TUTORING - 600
+         */
+
+        /*
+         * OTHER - 700
+         */
     }
 }

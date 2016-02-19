@@ -24,10 +24,11 @@ class CreateUserSkillsTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-            $table->foreign('skill_id')
+            // If the skills are regenerated, we don't want to delete user skills.
+            /*$table->foreign('skill_id')
                 ->references('id')
                 ->on('skills')
-                ->onDelete('cascade');
+                ->onDelete('cascade');*/
         });
     }
 

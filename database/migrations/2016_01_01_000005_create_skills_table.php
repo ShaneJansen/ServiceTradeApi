@@ -15,14 +15,9 @@ class CreateSkillsTable extends Migration
         Schema::create('skills', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            $table->increments('id');
+            $table->integer('id')->unsigned();
             $table->integer('skill_sub_category_id')->unsigned();
             $table->string('name', 50);
-
-            $table->foreign('skill_sub_category_id')
-                ->references('id')
-                ->on('skill_sub_categories')
-                ->onDelete('cascade');
         });
     }
 

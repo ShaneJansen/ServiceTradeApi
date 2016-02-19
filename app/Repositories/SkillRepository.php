@@ -38,4 +38,12 @@ class SkillRepository {
         }
         return $this->getAllUserSkills($userId);
     }
+
+    public function removeUserSkill($userId, $skillId) {
+        $userSkill = UserSkill::where('user_id', $userId)
+            ->where('skill_id', $skillId)->first();
+        if ($userSkill == NULL) return false;
+        $userSkill->delete();
+        return true;
+    }
 }

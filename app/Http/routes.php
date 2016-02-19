@@ -27,7 +27,8 @@ Route::group(['middleware' => ['authenticate']], function () {
     Route::put('user', 'UserController@updateUser');
     Route::group(['prefix' => 'user'], function () {
         Route::get('skill', 'UserController@getAllUserSkills');
-        Route::post('skill', 'UserController@addUserSkill');
+        Route::post('skill', 'UserController@addUserSkills');
+        Route::delete('skill/{skillId}', 'UserController@removeUserSkill');
     });
 
     // Availability

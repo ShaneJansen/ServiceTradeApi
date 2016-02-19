@@ -108,9 +108,16 @@ class UserController extends Controller {
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function addUserSkill(Request $request) {
+    public function addUserSkills(Request $request) {
         return response($this->skillRepo->addUserSkills(
             $this->helper->getUserId($request),
             $request->input('skillIds')));
+    }
+
+    public function removeUserSkill(Request $request, $skillId) {
+        $result = $this->skillRepo->removeUserSkill(
+            $this->helper->getUserId($request), $skillId);
+        if ($result) return '';
+        else return response()->json(['Skill not found.'], 404);
     }
 }
