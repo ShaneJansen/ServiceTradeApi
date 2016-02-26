@@ -21,18 +21,18 @@ class SkillsSeeder extends Seeder
          */
             /* Mobile Applications - 100 */
             DB::table('skills')->insert([
-                'id' => 1001,
+                'id' => 11001,
                 'skill_sub_category_id' => 1001,
                 'name' => 'Android'
             ]);
             DB::table('skills')->insert([
-                'id' => 1002,
+                'id' => 11002,
                 'skill_sub_category_id' => 1001,
                 'name' => 'iOS'
             ]);
             /* Websites/Frontend - 200 */
             DB::table('skills')->insert([
-                'id' => 2001,
+                'id' => 12001,
                 'skill_sub_category_id' => 1002,
                 'name' => 'AngularJS'
             ]);
