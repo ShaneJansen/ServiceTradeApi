@@ -14,7 +14,7 @@ class SkillSubCategoriesSeeder extends Seeder
         // Clear the table
         DB::table('skill_sub_categories')->delete();
 
-        /* Programming - 100 */
+        /* Programming - 1 */
         DB::table('skill_sub_categories')->insert([
             'id' => 1001,
             'skill_category_id' => 1001,
@@ -34,16 +34,22 @@ class SkillSubCategoriesSeeder extends Seeder
             'icon' => 'cloud'
         ]);
 
-        /* Graphics & Design - 200 */
+        /* Graphics & Design - 2 */
+        DB::table('skill_sub_categories')->insert([
+            'id' => 2001,
+            'skill_category_id' => 1002,
+            'name' => 'All',
+            'icon' => ''
+        ]);
 
-        /* Writing & Translation - 300 */
+        /* Writing & Translation - 3 */
 
-        /* Video & Animation - 400 */
+        /* Video & Animation - 4 */
 
-        /* Business - 500 */
+        /* Business - 5 */
 
-        /* Tutoring - 600 */
+        /* Tutoring - 6 */
 
-        /* Other - 700 */
+        /* Other - 7 */
     }
 }

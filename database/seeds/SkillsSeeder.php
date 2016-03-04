@@ -16,10 +16,12 @@ class SkillsSeeder extends Seeder
          */
         DB::table('skills')->delete();
 
+
         /*
-         * PROGRAMMING - 100
+         * PROGRAMMING - 1
          */
-            /* Mobile Applications - 100 */
+
+            /* Mobile Applications - 1 */
             DB::table('skills')->insert([
                 'id' => 11001,
                 'skill_sub_category_id' => 1001,
@@ -30,35 +32,88 @@ class SkillsSeeder extends Seeder
                 'skill_sub_category_id' => 1001,
                 'name' => 'iOS'
             ]);
-            /* Websites/Frontend - 200 */
+
+            /* Websites/Frontend - 2 */
             DB::table('skills')->insert([
                 'id' => 12001,
                 'skill_sub_category_id' => 1002,
                 'name' => 'AngularJS'
             ]);
 
-        /*
-         * GRAPHICS & DESIGN - 200
-         */
+            /* Databases/Backend - 3 */
+            DB::table('skills')->insert([
+                'id' => 13001,
+                'skill_sub_category_id' => 1003,
+                'name' => 'PHP'
+            ]);
+
+
+        /* ----------------------------------------------------------------------------- */
+
 
         /*
-         * WRITING AND TRANSLATION - 300
+         * GRAPHICS & DESIGN - 2
          */
 
-        /*
-         * VIDEO & ANIMATION - 400
-         */
+            /* All - 1 */
+            DB::table('skills')->insert([
+                'id' => 21001,
+                'skill_sub_category_id' => 2001,
+                'name' => 'Logos'
+            ]);
+            DB::table('skills')->insert([
+                'id' => 21002,
+                'skill_sub_category_id' => 2001,
+                'name' => 'Photoshop Edits'
+            ]);
+            DB::table('skills')->insert([
+                'id' => 21003,
+                'skill_sub_category_id' => 2001,
+                'name' => '3D Models'
+            ]);
+            DB::table('skills')->insert([
+                'id' => 21004,
+                'skill_sub_category_id' => 2001,
+                'name' => 'Advertisements'
+            ]);
+
+
+        /* ----------------------------------------------------------------------------- */
+
 
         /*
-         * BUSINESS - 500
+         * WRITING AND TRANSLATION - 3
          */
 
-        /*
-         * TUTORING - 600
-         */
+
+        /* ----------------------------------------------------------------------------- */
+
 
         /*
-         * OTHER - 700
+         * VIDEO & ANIMATION - 4
+         */
+
+
+        /* ----------------------------------------------------------------------------- */
+
+        /*
+         * BUSINESS - 5
+         */
+
+
+        /* ----------------------------------------------------------------------------- */
+
+
+        /*
+         * TUTORING - 6
+         */
+
+
+        /* ----------------------------------------------------------------------------- */
+
+
+        /*
+         * OTHER - 7
          */
     }
 }

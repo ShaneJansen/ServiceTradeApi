@@ -18,7 +18,7 @@ class SkillCategoriesSeeder extends Seeder
         // Clear the table
         DB::table('skill_categories')->delete();
 
-        /* Categories - 100 */
+        /* Categories - 1 */
         DB::table('skill_categories')->insert([
             'id' => 1001,
             'name' => 'Programming',
