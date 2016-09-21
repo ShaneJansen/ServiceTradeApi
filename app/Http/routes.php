@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function() { return "Welcome to the API!"; });
+Route::get('/', function() { return "Welcome to the ServiceTrade REST API!"; });
 
 /*
  * Account APIs
